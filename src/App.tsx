@@ -40,7 +40,6 @@ export default function App() {
   const columns = [
     {
       key: 'id',
-      label: '#',
       _props: { scope: 'col' },
     },
     {
@@ -86,19 +85,25 @@ export default function App() {
         <CTable
           columns={columns}
           items={expenses.map(expense => {
-          // NOTE: could've used `...expense` here (destructuring) but I think
-          // it's better to explicitly know what fields you're using
-          return {
-            id: expense.id,
-            date: expense.date,
-            merchant: expense.merchant,
-            amount: expense.amount,
-            category: expense.category,
-            description: expense.description,
-            status: expense.status,
-            _cellProps: { id: { scope: 'row' } },
-          }
-        })} />
+            // NOTE: could've used `...expense` here (destructuring) but I think
+            // it's better to explicitly know what fields you're using
+            return {
+              id: expense.id,
+              date: new Date(expense.date).toLocaleDateString(
+                'en-US', {
+                  month: 'long',
+                  day: 'numeric',
+                  year: 'numeric'
+                }
+              ),
+              merchant: expense.merchant,
+              amount: expense.amount,
+              category: expense.category,
+              description: expense.description,
+              status: expense.status,
+              _cellProps: { id: { scope: 'row' } },
+            }
+          })} />
       </div>
 
     </div>
