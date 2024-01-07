@@ -2,18 +2,9 @@ import { useEffect, useState } from "react";
 import "./styles.css";
 import axios from "axios";
 import { CTable } from "@coreui/react";
+import { Expense } from "./types";
 
 export default function App() {
-
-  type Expense = {
-    id: Number
-    merchant: String
-    amount: Number
-    description: String
-    date: String // Date formatted
-    category: 'training' | 'travel' | 'meal'
-    status: String
-  }
 
   const [loading, setLoading] = useState<Boolean>(true)
   const [errorFound, setErrorFound] = useState<Boolean>(false)
