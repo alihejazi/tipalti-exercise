@@ -83,7 +83,9 @@ export default function App() {
       <div className="container">
         <h1>Expenses</h1>
         <hr />
-        <CTable columns={columns} items={expenses.map(expense => {
+        <CTable
+          columns={columns}
+          items={expenses.map(expense => {
           // NOTE: could've used `...expense` here (destructuring) but I think
           // it's better to explicitly know what fields you're using
           return {
